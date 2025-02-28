@@ -1,3 +1,8 @@
+/*I don't know if this matters, but I submitted on time without the honor code and 10 minutes late with it.
+THIS CODE WAS MY OWN WORK, IT WAS WRITTEN WITHOUT CONSULTING
+CODE WRITTEN BY OTHER STUDENTS OR COPIED FROM ONLINE RESOURCES. Philip Cardozo
+*/ 
+
 public class CardTable implements Table<Card, CardPlayer> {
     private CardSet[] places; // Represents the four places on the table
     private int current_place; // Tracks the current place where the next card will be placed
