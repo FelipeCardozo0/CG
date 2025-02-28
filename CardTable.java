@@ -1,7 +1,8 @@
 public class CardTable implements Table<Card, CardPlayer> {
-    private CardSet[] places;
-    private int current_place;
+    private CardSet[] places; // Represents the four places on the table
+    private int current_place; // Tracks the current place where the next card will be placed
 
+    // Constructor: Initializes the table with empty CardSets for each place
     public CardTable() {
         places = new CardSet[Table.NUMBER_OF_PLACES];
         for (int i = 0; i < places.length; i++) {
@@ -10,16 +11,18 @@ public class CardTable implements Table<Card, CardPlayer> {
         current_place = 0;
     }
 
+    // Returns the identifiers of the top cards in each place on the table
     @Override
     public int[] getPlaces() {
         int[] placeIdentifiers = new int[Table.NUMBER_OF_PLACES];
         for (int i = 0; i < places.length; i++) {
             Card topCard = places[i].getTopCard();
-            placeIdentifiers[i] = (topCard != null) ? topCard.identifier : -1;
+            placeIdentifiers[i] = (topCard != null) ? topCard.identifier : -1; // -1 if no card is present
         }
         return placeIdentifiers;
     }
 
+    // Handles a player's turn: plays a card, checks for matches, and updates the table
     @Override
     public void takeTurn(CardPlayer player) {
         // Step 1: Get the card played by the player
