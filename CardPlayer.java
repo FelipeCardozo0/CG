@@ -4,6 +4,16 @@ public class CardPlayer extends GeneralPlayer<Card> {
     private CardSet hand;
     public CardSet bank; // Public as per the assignment
 
+    // Default constructor
+    public CardPlayer() {
+        super("Default Player");
+        this.points = 0;
+        this.turn = false;
+        this.hand = new CardSet();
+        this.bank = new CardSet();
+    }
+
+    // Parameterized constructor
     public CardPlayer(String name) {
         super(name);
         this.points = 0;
