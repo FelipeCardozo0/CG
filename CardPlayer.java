@@ -1,3 +1,8 @@
+/*I don't know if this matters, but I submitted on time without the honor code and 10 minutes late with it.
+THIS CODE WAS MY OWN WORK, IT WAS WRITTEN WITHOUT CONSULTING
+CODE WRITTEN BY OTHER STUDENTS OR COPIED FROM ONLINE RESOURCES. Philip Cardozo
+*/ 
+
 public class CardPlayer extends GeneralPlayer<Card> {
     private int points; // Tracks the player's score
     private boolean turn; // Indicates if it's the player's turn
