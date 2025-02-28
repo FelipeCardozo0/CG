@@ -30,30 +30,35 @@ public class CardTable implements Table<Card, CardPlayer> {
             return;
         }
 
-        // Step 2: Add the card to the current place on the table
-        places[current_place].addCard(playedCard);
+        boolean matched = false;
 
-        // Step 3: Check for matching ranks in other places
+        // Step 2: Check for matching ranks in other places
         for (int i = 0; i < places.length; i++) {
             if (i != current_place) { // Skip the current place
                 Card topCard = places[i].getTopCard();
                 if (topCard != null && topCard.getRank() == playedCard.getRank()) {
-                    // Step 4: Match found! Add both cards to the player's bank and increment points
+                    // Step 3: Match found! Add both cards to the player's bank and increment points
                     player.bank.addCard(topCard); // Add the matching card from the table
                     player.bank.addCard(playedCard); // Add the played card
                     player.setPoints(player.getPoints() + 1); // Increment points
 
-                    // Remove the matching card from the table
+                    // Step 4: Remove the matching card from the table
                     places[i].removeTopCard();
+                    matched = true;
                     break; // Only one match per turn
                 }
             }
         }
 
-        // Step 5: Update the current place to the next place
+        // Step 5: If no match was found, add the played card to the current place
+        if (!matched) {
+            places[current_place].addCard(playedCard);
+        }
+
+        // Step 6: Update the current place to the next place
         current_place = (current_place + 1) % Table.NUMBER_OF_PLACES;
 
-        // Step 6: Set the player's turn to false
+        // Step 7: Set the player's turn to false
         player.setTurn(false);
     }
 }
